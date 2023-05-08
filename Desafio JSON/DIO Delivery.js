@@ -1,11 +1,41 @@
+const pedido = {
 
-const quantidadeItens = parseInt(gets());
-while (pedido.itens.length < quantidadeItens) {
+  cliente: gets(),
+ 
+  endereco: gets(),
+ 
+  itens: [],
+ 
+  taxaEntrega: 5.0
+ 
+ };
+  
+ const quantidadeItens = parseInt(gets());
+ 
+ while (pedido.itens.length < quantidadeItens) {
+ 
   const nomeItem = gets();
+ 
   const precoItem = parseFloat(gets());
+ 
   pedido.itens.push({ nome: nomeItem, preco: precoItem });
-}
-
-let totalPrecoItem = pedido.itens.reduce((prev,curr) => prev + curr.preco, 0)
-let valorTotal = pedido.taxaEntrega + totalPrecoItem;
-console.log('Pedido: '+pedido.cliente+'\nEndereco de entrega: '+pedido.endereco+'\nTotal: R$ '+valorTotal.toFixed(2));
+ 
+ } 
+  
+ let total = 0;
+ 
+ for (let i = 0; i < pedido.itens.length; i++) {
+ 
+  var totalPedido = pedido.itens[i].preco;
+ 
+  total += totalPedido;
+ 
+  }
+ 
+  total += pedido.taxaEntrega;
+  
+ console.log("Pedido: " + pedido.cliente);
+ 
+ console.log("Endereco de entrega: "+ pedido.endereco);
+ 
+ console.log("Total: R$ "+total.toFixed(2));
